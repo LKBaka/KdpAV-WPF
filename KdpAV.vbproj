@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>WPFTest</RootNamespace>
+    <UseWPF>true</UseWPF>
+	<UseWindowsForms>true</UseWindowsForms>
+	<ApplicationIcon>wd.ico</ApplicationIcon>
+	<ApplicationManifest>My Project\app.manifest</ApplicationManifest> 
+  </PropertyGroup>
+
+  <ItemGroup>
+    <COMReference Include="MSComDlg">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>2</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>62ccb247-511b-43f6-801e-5bb596c35cea</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>4</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wd.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Import Include="System.Windows" />
+    <Import Include="System.Windows.Controls" />
+    <Import Include="System.Windows.Data" />
+    <Import Include="System.Windows.Documents" />
+    <Import Include="System.Windows.Input" />
+    <Import Include="System.Windows.Media" />
+    <Import Include="System.Windows.Media.Imaging" />
+    <Import Include="System.Windows.Navigation" />
+    <Import Include="System.Windows.Shapes" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="iNKORE.UI.WPF.Modern" Version="0.9.30" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="PeNet" Version="4.0.5" />
+  </ItemGroup>
+
+</Project>
