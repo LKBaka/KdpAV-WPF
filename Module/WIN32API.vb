@@ -1,8 +1,21 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Text
 
+Public Enum PreferredAppMode
+    _Default
+    AllowDark
+    ForceDark
+    ForceLight
+    Max
+End Enum
+
+
 
 Class WIN32API
+
+    Public Declare Function SetPreferredAppMode Lib "uxtheme.dll" Alias "#135" (ByVal preferredAppMode As PreferredAppMode) As IntPtr
+
+    Public Declare Sub FlushMenuThemes Lib "uxtheme.dll" Alias "#136" ()
     <DllImport("user32.dll", SetLastError:=True)>
     Public Shared Function SetParent(ByVal hWndChild As IntPtr, ByVal hWndNewParent As IntPtr) As IntPtr
     End Function
