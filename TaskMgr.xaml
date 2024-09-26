@@ -1,0 +1,46 @@
+﻿<Window x:Name="Tsk" x:Class="TaskMgr"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+    ui:ThemeManager.IsThemeAware="True"
+    ui:WindowHelper.SystemBackdropType="Mica"
+    ui:WindowHelper.UseModernWindowStyle="True"
+    ui:WindowHelper.FixMaximizedWindow="False"
+    Title="KdpAV任务管理器" Height="474" Width="378"
+    ResizeMode="CanMinimize"
+    Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
+
+    <Grid>
+
+        <Menu x:Name="menu1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="385" Height="33" Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}" Margin="0,0,-13,0">
+            <MenuItem Name="File" Header="文件" Height="33">
+                <MenuItem Name="Open" Header="打开文件" Click="Open_Click"/>
+                <MenuItem Name="Close_Form" Header="退出" Click="Close_Form_Click"  />
+            </MenuItem>
+        </Menu>
+        <TabControl HorizontalAlignment="Left" Height="412" Margin="0,33,-13,0" VerticalAlignment="Top" Width="385" Name="tabc" Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}" ui:TabControlHelper.IsAddTabButtonVisible="False">
+            <TabItem Header="进程"  Name="Process_Page" IsSelected="True" IsHitTestVisible="True" >
+                <Grid Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
+                    <ListBox x:Name="ListBox_Process" HorizontalAlignment="Left" Height="380" VerticalAlignment="Top" Width="385"  Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="KillProcess" Header="结束进程" Click="KillProcess_Click"/>
+                                <MenuItem x:Name="Refresh" Header="刷新列表" Click="Refresh_Click"/>
+                                <MenuItem x:Name="OpenFilePath" Header="打开文件位置" Click="OpenFilePath_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+            <!--<TabItem Header="性能"  Name="Performance_Page" IsSelected="True" IsHitTestVisible="True" >
+                <Grid Background="White" Height="380" Width="385">
+                    <Frame x:Name="contentframe" Content="" HorizontalAlignment="Left" Height="380" Margin="108,0,0,0" VerticalAlignment="Top" Width="277" NavigationUIVisibility ="Hidden"/>
+                    <Ellipse Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="380" Margin="108,0,0,0" Stroke="#FFDADADA" VerticalAlignment="Top" Width="2"/>
+                    <Button x:Name="Button_CPU" Content="CPU" HorizontalAlignment="Left" VerticalAlignment="Top" Width="108"/>
+                </Grid>
+            </TabItem>-->
+
+        </TabControl>
+    </Grid>
+
+</Window>
