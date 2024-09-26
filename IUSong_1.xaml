@@ -1,0 +1,609 @@
+﻿<Window x:Name="IUSong_W1"
+        x:Class="IUSong_1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+        ui:ThemeManager.IsThemeAware="True"
+        ui:WindowHelper.SystemBackdropType="Mica"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        ui:WindowHelper.FixMaximizedWindow="False"
+        xmlns:local="clr-namespace:KdpAV_WPF"
+        mc:Ignorable="d"
+        Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}"
+        Title="IU Song"
+        Height="695"
+        Width="1101"
+        ResizeMode="CanMinimize">
+    <Grid>
+        <TabControl HorizontalAlignment="Center"
+                    Height="670"
+                    VerticalAlignment="Top"
+                    Width="1101"
+                    Name="tabc"
+                    Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}"
+                    ui:TabControlHelper.IsAddTabButtonVisible="False"
+                    Margin="0,10,0,0">
+            <TabItem Header="IU Song Part 1"
+                     Name="IU_1"
+                     IsSelected="True"
+                     IsHitTestVisible="True">
+                <Grid Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
+                    <TextBlock x:Name="l1"
+                               HorizontalAlignment="Left"
+                               Margin="10,2,0,0"
+                               VerticalAlignment="Top"
+                               Height="623"
+                               FontSize="13.5">
+                               IU Song Part 1<LineBreak />
+珍九鼎食万钱，<LineBreak />
+写杀软圈钱，<LineBreak />
+开个IU圈钱，<LineBreak />
+把我钱包充填，<LineBreak />
+我要秀智商下限，<LineBreak />
+我还要搞诈骗，<LineBreak />
+圈光你们这群小可爱，<LineBreak />
+我们修不好Bug，<LineBreak />
+我们圈钱圈到爆，<LineBreak />
+我们要打击黑客，<LineBreak />
+不然圈钱没着落，<LineBreak />
+我们封禁机器码，<LineBreak />
+杀死黑客的麻麻，<LineBreak />
+我们缝合VMP，<LineBreak />
+四个壳子接地气，<LineBreak />
+对着破解释放洪荒之力，<LineBreak />
+我们追着破解打，<LineBreak />
+因为要圈钱开宝马，<LineBreak />
+我们相信我们摁死所有破解，<LineBreak />
+Crush the cheats,let's make it right，<LineBreak />
+Earning cash to shine so bright，<LineBreak />
+With hard work,we'll seize the day，<LineBreak />
+Drive a Beemer, pave our way，<LineBreak />
+圈钱卖 VIP只要1000元，<LineBreak />
+圈死你们这帮小可爱，<LineBreak />
+这就是IU，你能怎么搞，<LineBreak />
+敢写破解就给你们全部抓起来，<LineBreak />
+Evencan't fix the sprint, ourgame's got flaws，<LineBreak />
+Hacking never stop, breaking all the laws，<LineBreak />
+Gotta hit the hackersstrike'em with a blow，<LineBreak />
+Without thatmoney's stuck, nowhere to go，<LineBreak />
+We're banning HWID yeah, we play it rough，<LineBreak />
+Killing cheat vibe, thinkwe've done enough，<LineBreak />
+Has4 anti- cheats make it real tight，<LineBreak />
+Four layers deep, now it feels just right。<LineBreak />
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+            <TabItem Header="IU Song Part 2"
+                     Name="IU_2"
+                     IsSelected="True"
+                     IsHitTestVisible="True">
+                <Grid>
+                    <TextBlock x:Name="l2"
+                               HorizontalAlignment="Left"
+                               Margin="10,2,0,0"
+                               VerticalAlignment="Top"
+                               Height="623"
+                               FontSize="17.4"
+                               Width="434">
+                               IU Song Part 2<LineBreak />
+IU杀软公测时入账如同大风刮<LineBreak />
+现在我已经轻而易举随便开上了宝马<LineBreak />
+对软件BUG我们也是世俗的专家<LineBreak />
+摁着友商打到友商认输叫爸爸<LineBreak />
+写破解的地址野爹证也是随便的颁发<LineBreak />
+随随便便打倒PYASIU一家独大<LineBreak />
+PYAS来也是随便拷打<LineBreak />
+你们这些破解去别的杀软别来我家<LineBreak />
+damn, no one matter who you are<LineBreak />
+Make heypixel cheats, cops come knock in, you see<LineBreak />
+My death note linked your fate in my script<LineBreak />
+Mess with my BMW dreams, your fate to be flipped<LineBreak />
+In the game of fate, never gonna yield<LineBreak />
+要什么驱动只有低能儿需要<LineBreak />
+我们的驱动随随便便给你们调教<LineBreak />
+你IU大跌的远控随便给你电脑仙人跳<LineBreak />
+后门被发现了我操<LineBreak />
+赶紧发篇文章致歉给同行完爆<LineBreak />
+VBAST安全PYAS全都弱爆<LineBreak />
+Bug什么的根本不修<LineBreak />
+我们的驱动给PYAS杀到爆<LineBreak />
+宝马职业开局送驱动给友商锤爆<LineBreak />
+IU误杀绿色软件没有任何改变<LineBreak />
+IU误杀系统没有任何的悬念<LineBreak />
+
+BMW, it’ s my dream ride<LineBreak />
+Gotta drive a BMW, gonna cruise with pride<LineBreak />
+Making money, drive BMW, scheme so tight<LineBreak />
+
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="IU Song Part 3"
+                     Name="IU_3"
+                     IsSelected="True"
+                     IsHitTestVisible="True">
+                <Grid>
+                    <TextBlock x:Name="l3"
+                               HorizontalAlignment="Left"
+                               Margin="10,2,0,0"
+                               VerticalAlignment="Top"
+                               Height="623"
+                               FontSize="12.1"
+                               Width="434">
+                        IU Song Part 3<LineBreak />
+从前有一个杀软叫IU可以圈钱<LineBreak />
+现在我已经轻轻松松随随便便的诈骗<LineBreak />
+第一自制杀软PYAS一天不如一天<LineBreak />
+我用IU打倒PYAS指日即可实现<LineBreak />
+没有流量我就请人气主播来实现<LineBreak />
+我要怎样抄袭PYAS宝马梦才能实现<LineBreak />
+驱动抄袭再改名钞票就能变现<LineBreak />
+为什么我的眼里常含泪水<LineBreak />
+因为我的良心早已变成了鬼<LineBreak />
+就这样日子过了一年又一年<LineBreak />
+也不用担心什么舆论的出现<LineBreak />
+IU孝子会早晚维护我妖猫大跌的体面<LineBreak />
+只要我还在破解就不会猖狂<LineBreak />
+有人举报我光速神权我认为这非常的潇洒<LineBreak />
+打的所有破解哭的找妈妈<LineBreak />
+野爹证爱咋发就咋发<LineBreak />
+使用老鼠客户端我们的验证非常强大<LineBreak />
+这都是因为IU杀软破解泛滥<LineBreak />
+我们使用VMP杜绝破解的开发<LineBreak />
+为了残疾的用户体验功能只能拉跨<LineBreak />
+敢打扰你IU大跌的诈骗<LineBreak />
+卡巴斯基告诉你远控没有悬念<LineBreak />
+耶耶耶你又能怎样呢<LineBreak />
+一脚把PYAS飞踢我现在才是真正的王<LineBreak />
+我们抄袭PYAS驱动很成熟<LineBreak />
+拿来圈钱一定很炫酷<LineBreak />
+免广告只需要5000<LineBreak />
+圈出我的车位钱<LineBreak />
+不用担心其他人对我的指指点点<LineBreak />
+也不需要论证什么诈骗的经验<LineBreak />
+VIP 1000块没有任何功能<LineBreak />
+就喜欢你们这群傻逼被我圈钱之后的无能的狂怒<LineBreak />
+为了心疼变得失神<LineBreak />
+我马上就名城飞腾<LineBreak />
+是宝马让我丢了魂<LineBreak />
+幻想我是救世神仙<LineBreak />
+对不起我只是个癫疯<LineBreak />
+捅破了自制杀软创新的新天<LineBreak />
+从今天开始这就是我诈骗过往的一切<LineBreak />
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="IU Song Part 4"
+                     Name="IU_4"
+                     IsSelected="True"
+                     IsHitTestVisible="True">
+                <Grid>
+                    <TextBlock x:Name="l4"
+                               HorizontalAlignment="Left"
+                               Margin="10,2,0,0"
+                               VerticalAlignment="Top"
+                               Height="623"
+                               FontSize="10.1"
+                               Width="434">
+                        IU Song Part 4<LineBreak />
+我要圈钱 我要圈钱<LineBreak />
+我要圈死你们 我要把你们圈的倾家荡产<LineBreak />
+我打开IU杀毒软件 账单马上哗哗涨<LineBreak />
+总有脑残会给我充钱<LineBreak />
+总有脑残维护我的脸面<LineBreak />
+我开着宝马奔驰装老鼠把破解整<LineBreak />
+我们的VIP只需1千元 用户原地破防<LineBreak />
+我们不想修监控 广告就像是被C<LineBreak />
+用户体验不过脑 因为金钱就是宝<LineBreak />
+只有圈钱才是王道 用户全部圈跑<LineBreak />
+就算舆论多不好 IU也不会倒<LineBreak />
+yeah yeah<LineBreak />
+我们无敌反破解 打的黑客叫爸爸<LineBreak />
+我在端里装后门 让黑客🐎被仑<LineBreak />
+我是 IU 我爱圈钱<LineBreak />
+我是 IU 手段万千<LineBreak />
+每天的早上我都与黑客对抗<LineBreak />
+I like money. I want money<LineBreak />
+我不关广告 我不买壳子<LineBreak />
+我搞死黑客 我圈钱最会<LineBreak />
+这就是IU 自制杀软圈最好的杀软<LineBreak />
+BMW is my favourite drive<LineBreak />
+This is me , Just a IU and Shit<LineBreak />
+我要圈钱开宝马 所有黑客都是渣<LineBreak />
+We have forgotten our hearts , But so what<LineBreak />
+Money above all else<LineBreak />
+现在的黑客无法入侵IU<LineBreak />
+你们黑客不如看着老片偷偷岛<LineBreak />
+我们伟大的IU<LineBreak />
+有着4个大壳子<LineBreak />
+什么IDA<LineBreak />
+他们全都是个p<LineBreak />
+最后又来了个注册机<LineBreak />
+我要拔了你们的壳<LineBreak />
+在我的宝马之路上没人能让我撤<LineBreak />
+你们这些黑客全部都会寄<LineBreak />
+赶紧去别的杀软破解<LineBreak />
+这就是我们的底气<LineBreak />
+一个是沈阳一个是珠海的<LineBreak />
+我们ban掉破解<LineBreak />
+让黑客失了智<LineBreak />
+偷偷远控玩家马上瞬移到你家<LineBreak />
+你们的电脑马上就被IU入侵<LineBreak />
+所有的黑客大惊<LineBreak />
+我操！<LineBreak />
+这就是IU 年度自制杀软获奖者<LineBreak />
+你们能怎么搞<LineBreak />
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="IU Song Part 5"
+                     Name="IU_5"
+                     IsSelected="True"
+                     IsHitTestVisible="True">
+                <Grid>
+                    <TextBlock x:Name="l5"
+                               HorizontalAlignment="Left"
+                               Margin="10,2,0,0"
+                               VerticalAlignment="Top"
+                               Height="623"
+                               FontSize="11"
+                               Width="434">
+                        IU Song Part 5<LineBreak />
+所有自制杀软作者都给我记住<LineBreak />
+IU已经成为杀软的中流砥柱<LineBreak />
+PYAS被我们打倒不剩底裤<LineBreak />
+能不能竞争过我们你们心里没点逼数<LineBreak />
+有黑客我们就招聘一群尼哥客服<LineBreak />
+封禁黑客IP日日夜夜带着我的黑奴<LineBreak />
+去领工资吧客服们钱在我的迈巴赫里<LineBreak />
+这般员工待遇其他杀软拿什么比<LineBreak />
+IU is the best,<LineBreak />
+Never take a user's quest.<LineBreak />
+IU is the best,<LineBreak />
+Invest in us, we're truly blessed.<LineBreak />
+IU is the best,<LineBreak />
+Join us as a welcome guest.<LineBreak />
+IU is the best,<LineBreak />
+Feel our zest, we're ahead of the rest.<LineBreak />
+BUG修不好主防像艾草<LineBreak />
+再厉害的黑客也会在这里栽倒<LineBreak />
+误杀也是一点不会改变<LineBreak />
+绿色软件被杀来申诉随时待见<LineBreak />
+圈钱也是一点不会改变<LineBreak />
+这样反破解显得卓有成效<LineBreak />
+黑客用户看见直接被恐惧笼罩<LineBreak />
+不充钱你无权申诉原因无可奉告<LineBreak />
+那些用户就是充钱用户的游戏体验<LineBreak />
+被屏蔽了手写保证书少给我犯贱<LineBreak />
+你们都在说我偷服务端圈钱  <LineBreak />
+无所谓我的公关证明这都是谣言<LineBreak />
+无所谓，群聊中我会屏蔽发言<LineBreak />
+我们会强制闭嘴所有谏言<LineBreak />
+我们缝合开源代码把内容充填<LineBreak />
+随随便便变成我们自研<LineBreak />
+宝马职业送驱动劲爆圈钱<LineBreak />
+不这样怎么才能珍九鼎食万钱<LineBreak />
+IU is the best,<LineBreak />
+Never take a user's quest.<LineBreak />
+IU is the best,<LineBreak />
+Invest in us, we're truly blessed.<LineBreak />
+IU is the best,<LineBreak />
+Join us as a welcome guest.<LineBreak />
+IU is the best,<LineBreak />
+Feel our zest, we're ahead of the rest.<LineBreak />
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="IU Song Part 6"
+                     Name="IU_6"
+                     IsSelected="True"
+                     IsHitTestVisible="True">
+                <Grid>
+                    <TextBlock x:Name="l6"
+                               HorizontalAlignment="Left"
+                               Margin="10,2,0,0"
+                               VerticalAlignment="Top"
+                               Height="623"
+                               FontSize="13.5"
+                               Width="434">
+                        IU Song Part 6<LineBreak />
+IU上线那是十分的惊艳<LineBreak />
+圈钱开上宝马也是正如我所愿<LineBreak />
+你们这群小垃圾只能被我贬低<LineBreak />
+且看我如何把你们圈成神经病<LineBreak />
+开始圈大钱,火速搞诈骗<LineBreak />
+我还要拿你们,来做一个实验<LineBreak />
+客服宝马野爹证随便的颁发<LineBreak />
+横财三千万在我面前就是发发发<LineBreak />
+主动防御修不好我们懒得继续搞<LineBreak />
+就算绿色软件被误杀我底气也是十分的硬<LineBreak />
+你在这给我无病呻吟我就权当你是在放屁<LineBreak />
+宝马职业啃个附魔金我有首付宝马I8的实力<LineBreak />
+没钱了我就出个VIP继续圈爆你们的米<LineBreak />
+主动防御超级误报也是十分的强大<LineBreak />
+现在我每天都睡到中午不用上早八<LineBreak />
+VIP8有指定要误报软件的特权<LineBreak />
+你们这群傻逼赶紧来多给我送点银元<LineBreak />
+下面的快竖起耳朵请听我IU的讲解<LineBreak />
+因为我现在要传授你们诈骗的经验<LineBreak />
+给个ID我去抓一下新破解的特征<LineBreak />
+我速度再写后门让外挂咆哮与无能<LineBreak />
+我们的杀软竞赛都是十分公平公正<LineBreak />
+点击开启主动防御即可开始原地开始魔怔<LineBreak />
+你敢利用漏洞口我就对你永久屏蔽飞踢<LineBreak />
+IU的完美世界容不下你的异议<LineBreak />
+在此我请你们给PYAS转发一个消息<LineBreak />
+就说在我IU面前PYAS只是一个垃圾<LineBreak />
+什么抄袭的UI<LineBreak />
+这是我敞篷的超跑<LineBreak />
+随便加点东西我团队SKID非常牛逼<LineBreak />
+抄光PYAS我反手再抄袭ANK<LineBreak />
+天啊这简直就是巨大的商机秘密<LineBreak />
+我要抓住机会下一盘紧凑的大棋<LineBreak />
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="IU Song Part 7"
+                     Name="IU_7"
+                     IsSelected="True"
+                     IsHitTestVisible="True">
+                <Grid>
+                    <TextBlock x:Name="l7"
+                               HorizontalAlignment="Left"
+                               Margin="10,2,0,0"
+                               VerticalAlignment="Top"
+                               Height="623"
+                               FontSize="15"
+                               Width="434">
+                        IU Song Part 7<LineBreak />
+所有IU的用户你们都给我记住<LineBreak />
+现在你们都是我IU的星怒<LineBreak />
+请你们记得对我的圈钱计划随时进行关注<LineBreak />
+小心我把你们诈骗的不剩底裤<LineBreak />
+开上宝马是我最大的精神支柱<LineBreak />
+垃圾的黑客你们别想给我注入<LineBreak />
+圈钱搞诈骗的事情是我的本心<LineBreak />
+不然客服无法倾听你们的声音<LineBreak />
+群聊里我IU已经称上皇帝<LineBreak />
+为什么PYAS对我没有任何异议<LineBreak />
+因为IU的宗旨就是抄袭<LineBreak />
+快养出我的孝子把矛盾转移<LineBreak />
+不然我怎么完成珍九鼎食万钱的初心<LineBreak />
+我们的云查杀性能也是非常的先进<LineBreak />
+我驾驶宝马已经甩开了其他云查杀距离<LineBreak />
+你要问我开宝马节奏从何而起<LineBreak />
+这是我亲口说出的一个秘密<LineBreak />
+举办比赛我日日夜夜的操练<LineBreak />
+软件更新时所有黑子随时都来待见<LineBreak />
+驱动注入我调到最高的顶点<LineBreak />
+IDA逆向我亲手毁灭这一切<LineBreak />
+团队修不好主防我圈钱圈到爆<LineBreak />
+后门召唤着我来给黑客们吓尿<LineBreak />
+我精通写验证一验证客户端秒失效<LineBreak />
+这样打击破解显得卓有成效<LineBreak />
+绿色软件被杀请不要对我埋怨<LineBreak />
+因为我们杀软对你已经是感到厌倦<LineBreak />
+客户端的功能全是我的自研<LineBreak />
+重新命名成为我的知识产权<LineBreak />
+年度自制杀软的获奖者没有任何悬念<LineBreak />
+就让我IU再领唱IU Song这一遍<LineBreak />
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="IU Song Part 8"
+                     Name="IU_8"
+                     IsSelected="True"
+                     IsHitTestVisible="True">
+                <Grid>
+                    <TextBlock x:Name="l8"
+                               HorizontalAlignment="Left"
+                               Margin="10,2,0,0"
+                               VerticalAlignment="Top"
+                               Height="623"
+                               FontSize="8"
+                               Width="434">
+                        
+                        IU Song Part 8<LineBreak />
+杀软们都听好了，别装模作样，<LineBreak />
+IU的把戏，真的无敌强，<LineBreak />
+IU圈钱，变成了流行时尚，<LineBreak />
+用户的抱怨，全都成了我们的勋章。<LineBreak />
+<LineBreak />
+IU, money's our antivirus,<LineBreak />
+Get your wallet out, it's never the same.<LineBreak />
+IU运营全靠圈钱，<LineBreak />
+用户体验放在一边。<LineBreak />
+<LineBreak />
+IU, bug多如麻，<LineBreak />
+修不好主防我就哈哈。<LineBreak />
+VIP用户花钱如流水，<LineBreak />
+绿色用户被我随便贬低。<LineBreak />
+<LineBreak />
+BUG满天飞，修复靠运气，<LineBreak />
+打着反破解，实际无作为。<LineBreak />
+客服线上招募，自动回复多酷，<LineBreak />
+用户反馈无望，只能无奈叫苦。<LineBreak />
+<LineBreak />
+IU, we're the kings,<LineBreak />
+Every update, we clip your wings.<LineBreak />
+买个VIP，权力无限，<LineBreak />
+不充钱的，统统不见。<LineBreak />
+<LineBreak />
+IU, trust us, we're fair,<LineBreak />
+But only if you pay, then we'll care.<LineBreak />
+奖金赛上作弊横行，<LineBreak />
+疯狂狗叫，这是违规！<LineBreak />
+<LineBreak />
+IU, up the fees,<LineBreak />
+Every bug, just pay us please<LineBreak />.
+充值千元送宝马，<LineBreak />
+不掏腰包你只能瞎耍。<LineBreak />
+<LineBreak />
+云查杀崩溃，用户怒火中烧，<LineBreak />
+我们公关出来，只会甩锅跑。<LineBreak />
+说我偷***，圈钱搞诈骗，<LineBreak />
+对外宣传一切，都是谣言。<LineBreak />
+<LineBreak />
+IU, innovation at its peak,<LineBreak />
+Patchwork plugins, originality weak.<LineBreak />
+缝合驱动，自称自研，<LineBreak />
+拿来发布，还想骗钱。<LineBreak />
+<LineBreak />
+IU, cash rules all,<LineBreak />
+用户权益？根本不靠。<LineBreak />
+强制闭嘴，封禁谏言，<LineBreak />
+我们只在乎钱包还有没有空间。<LineBreak />
+<LineBreak />
+IU, we're the best,<LineBreak />
+Pay up, ignore the rest.<LineBreak />
+封禁机器码，杀死黑客妈，<LineBreak />
+四个大壳子，依旧无用瞎。<LineBreak />
+<LineBreak />
+IU, cash grab's our style,<LineBreak />
+Join us, it's worth your while.<LineBreak />
+花钱买特权，用户体验佳，<LineBreak />
+不充钱你就只能看我发家。<LineBreak />
+<LineBreak />
+IU, ruling with might,<LineBreak />
+Player complaints? Out of sight.<LineBreak />
+BUG修不好，主防像菜鸟，<LineBreak />
+再厉害的用户，也会被我嘲笑。<LineBreak />
+<LineBreak />
+IU, we're here to stay,<LineBreak />
+Money first, it's our way.<LineBreak />
+圈钱卖VIP，只要1000元，<LineBreak />
+圈死你们小可爱，满脸不耐烦。<LineBreak />
+<LineBreak />
+IU, best of the best,<LineBreak />
+Pay up or give it a rest.<LineBreak />
+花钱续命，免费受苦，<LineBreak />
+这就是IU，圈钱永不含糊。<LineBreak />
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="IU Song Part 9"
+                     Name="IU_9"
+                     IsSelected="True"
+                     IsHitTestVisible="True">
+                <Grid>
+                    <TextBlock x:Name="l9"
+                               HorizontalAlignment="Left"
+                               Margin="10,2,0,0"
+                               VerticalAlignment="Top"
+                               Height="623"
+                               FontSize="13"
+                               Width="434">
+                        IU Song Part 9<LineBreak />
+
+（年度自制杀软获奖者，IU）<LineBreak />
+
+IU杀毒发布时起人气开始大涨<LineBreak />
+钞票也变得一天比一天的多<LineBreak />
+我们推出了超级值的VIP<LineBreak />
+VIP没有任何附加的功能<LineBreak />
+我们IU杀毒的驱动非常的牛逼<LineBreak />
+只要从Github下载下来就可变现<LineBreak />
+不知名就邀请主播来虚假的测试<LineBreak />
+早些时日我们的钞票再也不会缺<LineBreak />
+<LineBreak />
+BMW. Its my dream ride<LineBreak />
+When I get the BMW<LineBreak />
+I will declare war in a high-profile manner<LineBreak />
+
+我要圈钱直到宝马再也塞不下<LineBreak />
+oh yeah . yeah. yeah.<LineBreak />
+你永远想不到，VIP要整整一千元<LineBreak />
+一千元的VIP也只能免广告<LineBreak />
+我们的应用商店<LineBreak />
+自带捆绑下载器<LineBreak />
+让我们告诉你，捆绑没有悬念<LineBreak />
+<LineBreak />
+我们的MBR保护天下第一<LineBreak />
+继禁止写之后又有驱动来Hook<LineBreak />
+我们顶级的误报，给电脑吉吉爆<LineBreak />
+Yeah.Yeah.<LineBreak />
+<LineBreak />
+你问我为什么那么的嚣张<LineBreak />
+原因是我有着忠诚的孝子<LineBreak />
+心情不好我要做VIP开宝马！<LineBreak />
+
+建议永远不听。直接两耳一闭<LineBreak />
+钱必须要圈。体验不能有<LineBreak />
+嘲讽友商后是要屏蔽的，屏蔽后又要嘲讽的<LineBreak />
+<LineBreak />
+引擎是抄袭的，是360的，是炒冷饭的<LineBreak />
+Yeah.Yeah.<LineBreak />
+（IU：我们始终保持着初心。我们将来会给大家带来更优秀的IU杀毒）<LineBreak />
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="IU Song Part X"
+                     Name="IU_X"
+                     IsSelected="True"
+                     IsHitTestVisible="True">
+                <Grid>
+                    <TextBlock x:Name="l10"
+                               HorizontalAlignment="Left"
+                               Margin="10,2,0,0"
+                               VerticalAlignment="Top"
+                               Height="623"
+                               FontSize="11.5"
+                               Width="434">
+                        我们IU的反破解十分的幽默<LineBreak />
+IU试图拿出自己的利器守护它的荣誉<LineBreak />
+安装迪克反注入<LineBreak />
+将黑客通通击毙<LineBreak />
+这下看你们这群傻逼怎么再次注入<LineBreak />
+我们绿色用户的体验糟糕得没法再谈<LineBreak />
+IU爱开宝马所以装作什么都不管<LineBreak />
+全凭LowIQ客服在那里随便乱叫<LineBreak />
+因为这样做我们每个人都能得一块<LineBreak />
+为了圈钱，主题色通通八百八十元<LineBreak />
+让你买的倾家荡产也没办法痛哭流涕<LineBreak />
+用户的需求全部不理我们做得足够了<LineBreak />
+说到底我想圈死的就是你们这群小鬼<LineBreak />
+与Kdp注入的爱恨情仇我们才刚刚开始<LineBreak />
+我们还安排内鬼让你内部全部崩溃<LineBreak />
+找特征码封禁是我们的长项<LineBreak />
+一天五更我们的气势锐不可当<LineBreak />
+IU is the best<LineBreak />
+Our money-grabbing spirit never dies<LineBreak />
+IU is the best<LineBreak />
+Driving a BMW is my quest<LineBreak />
+It makes me feel like I'm the best<LineBreak />
+No one can stop my happiness<LineBreak />
+一旦有用户注入进入我们杀毒<LineBreak />
+让你见识一下什么叫打开秒死号<LineBreak />
+不要尝试在聊天群里组团约炮<LineBreak />
+否则屮到你妈仰天长啸<LineBreak />
+请关闭加速器不然IU北斗到你家<LineBreak />
+眼前一黑电脑被IU安装了仙人跳<LineBreak />
+我操！<LineBreak />
+不懂规矩还想修仙让你生死难料<LineBreak />
+VIP用户你也别想拥有什么脸面<LineBreak />
+很抱歉，想解封需要提交手写姓名照片<LineBreak />
+即使蓝屏后我们也没任何改变<LineBreak />
+不这样怎么才能珍九鼎食万钱？<LineBreak />
+IU is the best,<LineBreak />
+We'll never forget our money quest.<LineBreak />
+IU is the best<LineBreak />
+Driving a BMW is my quest<LineBreak />
+It makes me feel like I'm the best<LineBreak />
+No one can stop my happiness<LineBreak />
+不这样怎么才能珍九鼎食万钱？<LineBreak />
+                    </TextBlock>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
