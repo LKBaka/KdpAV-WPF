@@ -1,0 +1,11 @@
+﻿<Window x:Name="进程监控_监控_" x:Class="进程监控_监控"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="进程监控_监控" Height="28" Width="25" ShowInTaskbar="False" >
+    <!--<Window.Resources>
+        <ContextMenu x:Key="trayContextMenu">
+            <MenuItem Header="退出"
+                      Click="ExitApplication_Click" />
+        </ContextMenu>
+    </Window.Resources>-->
+</Window>
