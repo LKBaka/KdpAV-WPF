@@ -1,0 +1,30 @@
+﻿<Page x:Name="Tool"
+      x:Class="ToolPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+      mc:Ignorable="d"
+      Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}"
+      Title="ToolPage"
+      Width="727"
+      Height="438"
+      MinWidth="559"
+      MinHeight="429">
+    <Grid Height="429">
+        <Button x:Name="Button_Taskmgr"
+                Content="任务管理器"
+                HorizontalAlignment="Left"
+                Margin="25,21,0,0"
+                VerticalAlignment="Top"
+                Width="135"
+                Height="36" />
+        <Button x:Name="Button_IUSong"
+                Content="IU Song"
+                Margin="168,21,0,0"
+                VerticalAlignment="Top"
+                Width="135"
+                Height="36" />
+    </Grid>
+</Page>
