@@ -1,124 +1,168 @@
-﻿Imports System.IO
-Imports System.Net
-Imports System.Net.WebRequestMethods
 Imports System.Security.Cryptography
-Imports System.Text
-Imports Newtonsoft.Json
-Imports WPFTest.WIN32API
-Imports WPFTest.KdpConst
 Imports PeNet
-Class HezhongCloudResult
-    Public code = Nothing
-    Public md5 = Nothing
-    Public score = Nothing
-    Public tag = Nothing
+Imports System.Text.Json
+
+Public Class HezhongResult
+    ' {"code": 200, "md5": "60823f6bf0020325a1db2d5ed25dba84", "score": 40, "tag": "Unknown"}
+    Public Property code As Integer
+    Public Property md5 As String
+    Public Property score As Integer
+    Public Property tag As String
 End Class
 Public Class Scan
-    Public peVirusImportedFuncs
-    Public VirusMD5 As New List(Of String)
-    Public Sub New(argMD5s As List(Of String))
-        VirusMD5 = argMD5s
+    Dim MD5Data As New ArrayList
+    Dim PEImportedFuncsData As New Dictionary(Of String, Integer)
+    Dim VirusScore = 0
+    Dim whiteList As New List(Of String) ' ������
+    Public Sub New(ByVal argMD5Data)
+        MD5Data = argMD5Data
     End Sub
-    Public Sub New(argVirusImportedFuncs As Dictionary(Of String, Integer))
-        peVirusImportedFuncs = argVirusImportedFuncs
+    Public Sub New(argPEImportedFuncsData, argVirusScore)
+        PEImportedFuncsData = argPEImportedFuncsData
+        VirusScore = argVirusScore
     End Sub
-    Public Function getMD5(filePath As String) As String
+    Public Sub New()
+
+    End Sub
+    Public Function getMD5(ByVal strSource As String) As String
+        Dim result As String = ""
+
         Try
-            Dim EmptyMd5 = MD5.Create
-            Using fr = IO.File.OpenRead(filePath)
-                ' 计算哈希值  
-                Dim hashBytes As Byte() = EmptyMd5.ComputeHash(fr)
-
-                ' 将字节数组转换为十六进制字符串  
-                Dim sb As New StringBuilder()
-                For Each b As Byte In hashBytes
-                    sb.Append(b.ToString("x2"))
-                Next
-
-                ' 返回哈希值的字符串表示  
-                Return sb.ToString()
-            End Using
+            'strSource = System.Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\path.txt"
+            Dim fstream As New IO.FileStream(strSource, IO.FileMode.Open, IO.FileAccess.Read)
+            Dim dataToHash(fstream.Length - 1) As Byte
+            fstream.Read(dataToHash, 0, fstream.Length)
+            fstream.Close()
+            Dim hashvalue As Byte() = CType(CryptoConfig.CreateFromName("MD5"), Security.Cryptography.HashAlgorithm).ComputeHash(dataToHash)
+            Dim i As Integer
+            For i = 0 To hashvalue.Length - 1
+                result += Microsoft.VisualBasic.Right("00" + Hex(hashvalue(i)).ToLower, 2)
+            Next
+            Return result
         Catch ex As Exception
-            Return ""
+            'MsgBox(ex.Message)
+            Return result
         End Try
+
     End Function
 
-    Public Async Function apiPeScan(filePath As String) As Task(Of Boolean)
-        Return Await Task.Run(Async Function()
-                                  Try
-                                      Dim NSudoDevilModeModuleHandle As IntPtr = LoadLibrary(NSudoPath) ' LoadLibrary导入DLL
-
-                                      Dim peFileResults = New PeFile(filePath)
-                                      Dim score = 0
-                                      For importedFuncIdx = 0 To peFileResults.ImportedFunctions.Count - 1
-                                          Dim funcName = peFileResults.ImportedFunctions(importedFuncIdx).Name
-                                          score += If(MainWindow.VirusImportedFuncs.ContainsKey(funcName), MainWindow.VirusImportedFuncs(funcName), 0)
-                                      Next
-
-
-                                      FreeLibrary(NSudoDevilModeModuleHandle)
-                                      If score > VirusScore Then Return True
-
-                                      Return False
-                                  Catch err As Exception
-                                      Return False
-                                  End Try
-                              End Function)
+    Public Function api_MD5Scan(ByVal fileMD5 As String) As Boolean
+        If MD5Data Is Nothing Then Throw New Exception("������Ϊ��")
+        Return Me.MD5Data.Contains(fileMD5)
     End Function
-    Public Async Function apiHezhongCloudScan(filePath As String) As Task(Of Boolean)
-        Return Await Task.Run(Async Function()
-                                  Dim url As String = "http://c.hezhongkj.top/scan"
-                                  Dim token As String = "a323a4a2-d096-4dd5-b69d-6bc5b6b9ae64"
-                                  Dim fileMD5 = getMD5(filePath)
-
-
-                                  Dim data As New With {
-                                    .token = token,
-                                    .md5 = fileMD5
-                                  }
-
-                                  Dim JsonData = JsonConvert.SerializeObject(data)
-
-                                  Dim byteArray As Byte() = Encoding.UTF8.GetBytes(JsonData)
-
-                                  ' 设置请求
-                                  Dim request As WebRequest = WebRequest.Create(url)
-                                  request.Method = "POST"
-                                  request.ContentType = "application/json"
-                                  request.ContentLength = byteArray.Length
-
-                                  ' 写入请求数据
-                                  Using stream As Stream = request.GetRequestStream()
-                                      stream.Write(byteArray, 0, byteArray.Length)
-                                  End Using
-
-                                  ' 发送请求并获取响应
+    Public Async Function api_ANKScan(ByVal filePath As String) As Task(Of Boolean)
+        Return Await Task.Run(Function()
                                   Try
-                                      Using response As WebResponse = request.GetResponse()
-                                          ' 读取响应
-                                          Using reader As New StreamReader(response.GetResponseStream())
-                                              Dim responseFromServer As String = reader.ReadToEnd()
+                                      If whiteList.Contains(getMD5(filePath)) Then Return False
 
-                                              Dim responseObject As HezhongCloudResult = JsonConvert.DeserializeObject(Of HezhongCloudResult)(responseFromServer)
-                                              Debug.Print(responseObject.score)
-                                              If CInt(responseObject.score) > 50 Then Return True
-                                          End Using
+                                      Dim procInfo As New ProcessStartInfo With {
+                                          .FileName = """" & CommonVars.AppPath & "\ANK_CORE\ANK_CORE.exe" & """",
+                                          .Arguments = " " & """" & filePath & """" & " " & "FUWRMQe336sSx5m5-mHOP7ncDsUbCL3l",
+                                          .CreateNoWindow = True,
+                                          .RedirectStandardOutput = True,
+                                          .UseShellExecute = False
+                                      }
+                                      Dim proc As New Process With {
+                                          .StartInfo = procInfo
+                                      }
+                                      proc.Start()
+
+                                      Using output As IO.StreamReader = proc.StandardOutput
+                                          If CDbl(output.ReadToEnd.Replace(vbCrLf, "")) >= 0.5 Then Return True
                                       End Using
 
+                                      proc.WaitForExit()
                                   Catch ex As Exception
+                                      Debug.Print("ANK " & ex.Message)
                                   End Try
-
                                   Return False
                               End Function)
     End Function
-    Public Async Function apiMD5Scan(fileMD5 As String) As Task(Of Boolean)
-        Return Await Task.Run(Function()
-                                  If VirusMD5.Contains(fileMD5) Then
-                                      Return True
-                                  End If
 
+    Public Async Function api_PiTuiScan(ByVal filePath As String) As Task(Of Boolean)
+        Return Await Task.Run(Function()
+                                  Try
+                                      If whiteList.Contains(getMD5(filePath)) Then Return False
+
+                                      'Virusmark.exe A abc123 "C:\Users\Example\Documents\file_to_scan.txt"
+                                      Dim procInfo As New ProcessStartInfo With {
+                                          .FileName = """" & CommonVars.AppPath & "\PiTui_Core\PiTuiCloud.exe" & """",
+                                          .Arguments = " " & "A " & "a323a4a2-d096-4dd5-b69d-6bc5b6b9ae64" & " " & """" & filePath & """",
+                                          .CreateNoWindow = True,
+                                          .RedirectStandardOutput = True,
+                                          .UseShellExecute = False
+                                      }
+                                      Dim proc As New Process With {
+                                          .StartInfo = procInfo
+                                      }
+                                      proc.Start()
+
+                                      Using output As IO.StreamReader = proc.StandardOutput
+                                          Dim jsonText = output.ReadToEnd
+                                          Dim r As HezhongResult = JsonSerializer.Deserialize(Of HezhongResult)(jsonText)
+                                          If r.code = 200 Then
+                                              Return r.score >= 50
+                                          End If
+                                      End Using
+
+                                      proc.WaitForExit()
+                                  Catch ex As Exception
+                                      Debug.Print("PiTui " & ex.Message)
+                                  End Try
                                   Return False
                               End Function)
+    End Function
+
+    Public Async Function api_PEDataScan(filePath As String) As Task(Of Boolean)
+        Return Await Task.Run(Function()
+                                  Try
+                                      Dim pefile As New PeNet.PeFile(filePath)
+                                      Dim score = 0
+                                      If pefile.ImportedFunctions Is Nothing Then Return False
+                                      For i As Integer = 0 To pefile.ImportedFunctions.Count - 1
+                                          Try
+                                              If pefile.ImportedFunctions(i).Name Is Nothing Then Continue For
+                                              Dim funcName = pefile.ImportedFunctions(i).Name.Replace(vbCrLf, "")
+
+                                              score += If(PEImportedFuncsData.ContainsKey(funcName), PEImportedFuncsData(funcName), 0)
+
+                                          Catch ex As Exception
+                                          End Try
+                                      Next
+                                      Return score >= VirusScore
+                                  Catch ex As Exception
+                                  End Try
+                                  Return False
+                              End Function)
+
+    End Function
+
+    Public Function noAsync_api_PEDataScan(filePath As String) As Boolean
+        Try
+            Dim pefile As New PeNet.PeFile(filePath)
+            Dim score = 0
+            For i As Integer = 0 To pefile.ImportedFunctions.Count - 1
+                'Try
+                If pefile.ImportedFunctions(i).Name Is Nothing Then Continue For
+                Dim funcName = pefile.ImportedFunctions(i).Name.Replace(vbCrLf, "")
+
+                score += If(PEImportedFuncsData.ContainsKey(funcName), PEImportedFuncsData(funcName), 0)
+
+                'Catch ex As Exception
+                'End Try
+            Next
+            Return score >= VirusScore
+        Catch ex As Exception
+        End Try
+        Return False
+
+    End Function
+
+    Private Function hasText(Lst, Text) As Boolean
+        For Each l In Lst
+            If l = Text Then Return True
+        Next
+        Return False
     End Function
 End Class
 

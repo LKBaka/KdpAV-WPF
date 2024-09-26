@@ -1,45 +1,75 @@
-﻿Imports System.IO
-Imports WPFTest.KdpConst
-Imports System.Windows.Threading
-Imports WPFTest.config
+﻿Imports System.Windows.Forms
+Imports System.Runtime.InteropServices, KdpAV_WPF.Win32API
+Imports KdpAV.Hooker
+Imports System.Windows.Interop
+
 Class MainWindow
-    Private WithEvents Timer1 As New DispatcherTimer
-    Public Shared Page
-    Public Shared VirusMD5 As New List(Of String)
-    Public Shared VirusImportedFuncs As Dictionary(Of String, Integer)
-    Private Async Sub Init()
-        Await Task.Run(Sub()
-                           VirusImportedFuncs = getVirusImportedFuncs()
-                           Debug.Print(VirusImportedFuncs.Keys.Count)
+    Public WithEvents timer1 As New Timer '时钟
+    Public Shared VirusMD5Data As New ArrayList 'MD5
+    Public Shared VirusFuncsData As New Dictionary(Of String, Integer) '导入表分数
+    Public Shared VirusScore = 125 ' 置信度
+    Public Shared funcs As New List(Of String) From
+    {"扫描", "任务管理器", "工具箱"} '功能列表
 
-                           Dim tmpMD5 As New List(Of String)
-                           For Each filePath In Directory.GetFiles($"{AppPath}\MD5\")
-                               Using sr As New StreamReader(filePath)
-                                   Dim subTmpMD5 = sr.ReadToEnd.Split(vbCrLf).ToList
-                                   For Each m In subTmpMD5
-                                       tmpMD5.Add(m)
-                                   Next
-                               End Using
-                           Next
+    Public Shared page = "HomePage" '选中页
+    Public Shared config As Dictionary(Of String, String) '配置
+    Private Sub SideMenu_Page_SelectionChanged(sender As iNKORE.UI.WPF.Modern.Controls.NavigationView, args As iNKORE.UI.WPF.Modern.Controls.NavigationViewSelectionChangedEventArgs) Handles SideMenu_Page.SelectionChanged
 
-                           VirusMD5 = tmpMD5
-
-                       End Sub)
+        Dim selectedItem = args.SelectedItem
+        page = selectedItem.Tag
     End Sub
+    Public Sub 导航页面(page As String)
+        contentFrame.Navigate(New Uri(page & ".xaml", UriKind.Relative))
+    End Sub
+
     Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        Timer1.Interval = TimeSpan.FromSeconds(0)
-        Timer1.Start()
+        timer1.Interval = 9
+        timer1.Start()
 
-        Page = "Home"
+        Dim cfg As New config(CommonVars.AppPath & "\config")
+        config = cfg.ReadAllConfigs()
 
-        Init()
+        Debug.Print(config("进程监控") = "True")
+        Debug.Print(config("文件监控") = "True")
+        Debug.Print(config("U盘助手") = "True")
+
+        If config("进程监控") = "True" Then
+            Dim f As New 进程监控_监控()
+            f.Show()
+        End If
+
+        If config("文件监控") = "True" Then
+            Dim f As New 文件监控_监控()
+            f.Show()
+        End If
+
+        If config("U盘助手") = "True" Then
+            Dim f As New U盘助手_主()
+            f.Show()
+        End If
+
+        cfg = New config(CommonVars.AppPath & "\MD5\") ' 读MD5
+        VirusMD5Data = cfg.ReadAllMD5Data
+
+        cfg = New config(CommonVars.AppPath & "\PEImportedFuncs") '读导入表函数分数表
+        VirusFuncsData = cfg.ReadAllPEImortedFuncsData
+
+        SideMenu_Page.IsPaneOpen = False '收缩侧边栏
+
     End Sub
-    Private Sub NavigateToPage(pageName As String)
 
-        mainFrame.Navigate(New Uri($"{pageName}.xaml", UriKind.Relative))
+    Private Async Sub timer1_Tick(sender As Object, e As EventArgs) Handles timer1.Tick
+        Await Task.Run(
+            Sub()
+                Dispatcher.Invoke(
+                Sub()
+                    Dim Open = SideMenu_Page.IsPaneOpen
+                    contentFrame.Width = If(Open, 481, 697)
+
+                    导航页面(page)
+                End Sub)
+            End Sub)
+
     End Sub
 
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        NavigateToPage(Page)
-    End Sub
 End Class
