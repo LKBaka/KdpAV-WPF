@@ -11,8 +11,8 @@
 
     <Grid>
         <Label x:Name="SubTitle" Content="发现一个可疑的威胁!" HorizontalAlignment="Left" Margin="59,43,0,0" VerticalAlignment="Top" Height="54" Width="329" FontSize="34"/>
-        <Label x:Name="LblProcessName" Content="进程名:IUMain.exe" HorizontalAlignment="Left" Margin="60,97,0,0" VerticalAlignment="Top" Height="28" Width="416" FontSize="20"/>
-        <Label x:Name="LblProcessPath" Content="路径:C:\iunotsafe\IUMain.exe" HorizontalAlignment="Left" Margin="60,130,0,0" VerticalAlignment="Top" Height="28" Width="416" FontSize="16.9"/>
+        <Label x:Name="LblProcessName" Content="{Binding ProcessName}" HorizontalAlignment="Left" Margin="60,97,0,0" VerticalAlignment="Top" Height="28" Width="416" FontSize="20"/>
+        <Label x:Name="LblProcessPath" Content="{Binding ProcessPath}" HorizontalAlignment="Left" Margin="60,130,0,0" VerticalAlignment="Top" Height="28" Width="416" FontSize="16.9"/>
         <ComboBox x:Name="ComboBox1" HorizontalAlignment="Left" Height="32" Margin="58,203,0,0" VerticalAlignment="Top" Width="226" SelectedIndex="0">
             <ComboBoxItem Content="仅结束进程"/>
             <ComboBoxItem Content="忽略"/>
