@@ -1,19 +1,91 @@
 ﻿<Page x:Class="ScanPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-      mc:Ignorable="d" 
+      xmlns:kdpav_wpf="clr-namespace:KdpAV_WPF"
+      d:DataContext="{d:DesignInstance Type=kdpav_wpf:ScanViewModel}"
+      mc:Ignorable="d"
       d:DesignHeight="320.504"
       Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}"
-      Title="ScanPage" Width="697" Height="429"  MinWidth="559" MinHeight="429">
+      Title="ScanPage"
+      Width="697"
+      Height="429"
+      MinWidth="559"
+      MinHeight="429">
+    <Page.Resources>
+        <!-- Add your theme keys here if not already defined -->
+        <ResourceDictionary>
+            <!-- Other resources -->
+            <kdpav_wpf:InverseColorConverter x:Key="InverseColorConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
     <Grid Height="429">
-        <TextBox x:Name="TextBox_Path" HorizontalAlignment="Left" Height="23" Margin="21,19,0,0" Text="C:\" VerticalAlignment="Top" Width="396" FontSize="16" MaxLines="1"/>
-        <Button x:Name="Button_Broswer" Content="..." HorizontalAlignment="Left" Margin="422,19,0,0" VerticalAlignment="Top" Width="34" Height="32"/>
-        <ListBox x:Name="ListBox_Virus" HorizontalAlignment="Left" Height="324" Margin="21,85,0,0" VerticalAlignment="Top" Width="655" BorderThickness="1" BorderBrush="Silver" Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}"/>
-        <Button x:Name="Button_StartScan" Content="开始扫描" HorizontalAlignment="Left" Margin="461,19,0,0" VerticalAlignment="Top" Width="109" Height="32"/>
-        <Button x:Name="Button_RemoveVirus" Content="清除" HorizontalAlignment="Left" VerticalAlignment="Top" Width="101" Height="32" Margin="575,19,0,0"/>
-        <Label x:Name="lblScanningFile" Content="扫描完成，共发现0个病毒" HorizontalAlignment="Left" Margin="21,56,0,0" VerticalAlignment="Top" Height="24" Width="655" FontSize="16"/>
+        <TextBox x:Name="TextBox_Path"
+                 HorizontalAlignment="Left"
+                 Height="23"
+                 Margin="21,19,0,0"
+                 Text="{Binding SelectedPath}"
+                 VerticalAlignment="Top"
+                 Width="396"
+                 FontSize="16"
+                 MaxLines="1" />
+        <Button x:Name="Button_Broswer"
+                Content="..."
+                HorizontalAlignment="Left"
+                Margin="422,19,0,0"
+                VerticalAlignment="Top"
+                Width="34"
+                Height="32"
+                Command="{Binding SelectPathAction}" />
+        <ListView x:Name="ListBox_Virus"
+                  HorizontalAlignment="Center"
+                  Height="306"
+                  Margin="0,103,0,0"
+                  VerticalAlignment="Top"
+                  Width="655"
+                  Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
+            <ListView.Style>
+                <Style TargetType="ListView">
+                    <Setter Property="BorderBrush"
+                            Value="Gray" />
+                    <Setter Property="BorderThickness"
+                            Value="1" />
+                    <!-- Other setters -->
+                </Style>
+            </ListView.Style>
+        </ListView>
+        <Button x:Name="Button_StartScan"
+                Content="开始扫描"
+                HorizontalAlignment="Left"
+                Margin="461,19,0,0"
+                VerticalAlignment="Top"
+                Width="109"
+                Height="32"
+                IsEnabled="{Binding IsScanning,Converter={StaticResource Bool取反}}"
+                Command="{Binding StartScanAction}" />
+        <Button x:Name="Button_RemoveVirus"
+                Content="清除"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Width="101"
+                Height="32"
+                Margin="575,19,0,0"
+                IsEnabled="{Binding IsScanning,Converter={StaticResource Bool取反}}" />
+        <Label x:Name="lblScanningFile"
+               Content="{Binding ScanningFile}"
+               HorizontalAlignment="Center"
+               Margin="0,58,0,0"
+               VerticalAlignment="Top"
+               Height="24"
+               Width="655"
+               FontSize="16" />
+        <ui:ProgressBar x:Name="PBar"
+                        HorizontalAlignment="Center"
+                     Height="11"
+                        Margin="0,87,0,0"
+                        VerticalAlignment="Top"
+                     Width="655" />
     </Grid>
 </Page>
