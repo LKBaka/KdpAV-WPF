@@ -1,4 +1,5 @@
 Imports System.Runtime.InteropServices
+Imports System.Windows.Interop
 
 Public Class Win32API
     <DllImport("kernel32.dll", SetLastError:=True)>
@@ -91,3 +92,4 @@ Public Structure CPU_USAGE
     Public kernelTime As ULong
     Public userTime As ULong
 End Structure
+
