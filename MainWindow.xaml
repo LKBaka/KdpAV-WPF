@@ -9,13 +9,15 @@
     Title="KdpAV-WPF" Height="460" Width="742"
     ResizeMode="CanMinimize"
     Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}"
-    Icon="Img/logo.ico" >
+    Icon="wd.ico"
+    Visibility="Visible">
 
     
     <Grid>
         <ui:NavigationView 
             x:Name="SideMenu_Page"
             PaneDisplayMode="Left" Margin="0,0,481,0" 
+            ui:IsPaneOpen="False"
             >
             <ui:NavigationView.MenuItems>
                 <ui:NavigationViewItem Icon="🏠︎" Content="主页" Tag="HomePage"/>
