@@ -1,23 +1,27 @@
-﻿Class SettingsPage
+﻿Imports System.ComponentModel
+
+Class SettingsPage
+    Dim SetthingsViewModel As New SetthingsViewModel(Me)
+
     Public Sub w()
         Dim cfg As New config(CommonVars.AppPath & "\config")
-        cfg.WriteAllConfigs(MainWindow.config)
+        cfg.WriteAllConfigs(App.config)
     End Sub
     Private Sub CheckBoxANKEngine_Checked(sender As Object, e As RoutedEventArgs) Handles CheckBoxANKEngine.Checked
-        MainWindow.config("ANK引擎") = "True"
+        App.config("ANK引擎") = "True"
         w()
     End Sub
     Private Sub CheckBoxANKEngine_Unchecked(sender As Object, e As RoutedEventArgs) Handles CheckBoxANKEngine.Unchecked
-        MainWindow.config("ANK引擎") = "False"
+        App.config("ANK引擎") = "False"
         w()
     End Sub
 
     Private Sub CheckBoxPEDataEngine_Checked(sender As Object, e As RoutedEventArgs) Handles CheckBoxPEDataEngine.Checked
-        MainWindow.config("导入表引擎") = "True"
+        App.config("导入表引擎") = "True"
         w()
     End Sub
     Private Sub CheckBoxPEDataEngine_Unchecked(sender As Object, e As RoutedEventArgs) Handles CheckBoxPEDataEngine.Unchecked
-        MainWindow.config("导入表引擎") = "False"
+        App.config("导入表引擎") = "False"
         w()
     End Sub
 
@@ -25,23 +29,22 @@
 
 
     Private Sub CheckBoxPiTuiEngine_Checked(sender As Object, e As RoutedEventArgs) Handles CheckBoxPiTuiEngine.Checked
-        MainWindow.config("猎剑云引擎") = "True"
+        App.config("猎剑云引擎") = "True"
         w()
     End Sub
 
     Private Sub CheckBoxPiTuiEngine_Unchecked(sender As Object, e As RoutedEventArgs) Handles CheckBoxPiTuiEngine.Unchecked
-        MainWindow.config("猎剑云引擎") = "False"
+        App.config("猎剑云引擎") = "False"
         w()
 
     End Sub
-    Private Sub SettingsPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        Dim cfg As New config(CommonVars.AppPath & "\config")
-        Dim c = cfg.ReadAllConfigs()
+    Public Sub New()
 
-        CheckBoxANKEngine.IsChecked = CBool(c("ANK引擎") = "True")
-        CheckBoxPEDataEngine.IsChecked = CBool(c("导入表引擎") = "True")
-        CheckBoxPiTuiEngine.IsChecked = CBool(c("猎剑云引擎") = "True")
-         
+        ' 此调用是设计器所必需的。
+        InitializeComponent()
+
+        ' 在 InitializeComponent() 调用之后添加任何初始化。
+        DataContext = SetthingsViewModel
     End Sub
 End Class
 

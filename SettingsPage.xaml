@@ -5,13 +5,19 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+      xmlns:kdpav_wpf="clr-namespace:KdpAV_WPF"
+      xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d"
       Title="HomePage"
       Width="698"
       Height="433"
       Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
+    <b:Interaction.Triggers>
+        <b:EventTrigger EventName="Loaded">
+            <b:InvokeCommandAction Command="{Binding InitSettingsPageAction}" />
+        </b:EventTrigger>
+    </b:Interaction.Triggers>
     <Grid Height="429">
-
         <TabControl HorizontalAlignment="Left"
                     Height="429"
                     VerticalAlignment="Top"
@@ -19,6 +25,7 @@
                     Name="tabc"
                     Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}"
                     ui:TabControlHelper.IsAddTabButtonVisible="False">
+
             <TabItem Header="安全"
                      x:Name="Function_Page"
                      IsSelected="True"
@@ -48,20 +55,91 @@
                               Content="ANK云引擎 (推荐)"
                               HorizontalAlignment="Left"
                               Margin="30,107,0,0"
-                              VerticalAlignment="Top" />
+                              VerticalAlignment="Top"
+                              IsChecked="{Binding ANK引擎}"
+                              xmlns:b="http://schemas.microsoft.com/xaml/behaviors">
+                    </CheckBox>
                     <CheckBox x:Name="CheckBoxPEDataEngine"
                               Content="导入表引擎"
                               HorizontalAlignment="Left"
                               Margin="30,144,0,0"
-                              VerticalAlignment="Top" />
+                              VerticalAlignment="Top"
+                              IsChecked="{Binding 导入表引擎}" />
                     <CheckBox x:Name="CheckBoxPiTuiEngine"
                               Content="猎剑云引擎"
                               HorizontalAlignment="Left"
                               Margin="30,181,0,0"
-                              VerticalAlignment="Top" />
+                              VerticalAlignment="Top"
+                              IsChecked="{Binding 猎剑云引擎}" />
                 </Grid>
             </TabItem>
 
+
+            <TabItem Header="关于"
+                     x:Name="AboutPage"
+                     IsSelected="True"
+                     IsHitTestVisible="True"
+                     Height="39"
+                     Width="97">
+                <Grid Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}"
+                      Height="390"
+                      Width="697">
+                    <Label x:Name="AboutTitle"
+                           Content="关于 KdpAV "
+                           HorizontalAlignment="Left"
+                           Margin="29,24,0,0"
+                           VerticalAlignment="Top"
+                           Height="50"
+                           Width="232"
+                           FontSize="38" />
+                    <Label x:Name="lbl开发者标题"
+                           HorizontalAlignment="Left"
+                           Margin="29,80,0,0"
+                           VerticalAlignment="Top"
+                           Height="35"
+                           Width="146"
+                           FontSize="26"
+                           Cursor=""
+                           Content="开发者:&#x000A;" />
+                    <Label x:Name="lbl开发者人员"
+                           HorizontalAlignment="Left"
+                           Margin="29,115,0,0"
+                           VerticalAlignment="Top"
+                           Height="59"
+                           Width="146"
+                           FontSize="20"
+                           Cursor=""
+                           Content="橙白Ex&#x000A;GDWare2024">
+                    </Label>
+                    <Label x:Name="lbl使用列表标题"
+                           HorizontalAlignment="Left"
+                           Margin="189,80,0,0"
+                           VerticalAlignment="Top"
+                           Height="35"
+                           Width="159"
+                           FontSize="26"
+                           Cursor=""
+                           Content="我们使用了:" />
+                    <Label x:Name="lbl使用列表"
+                           HorizontalAlignment="Left"
+                           Margin="190,115,0,0"
+                           VerticalAlignment="Top"
+                           Height="59"
+                           Width="146"
+                           FontSize="20"
+                           Cursor=""
+                           Content="猎剑云引擎&#xA;ANK云引擎" />
+                    <Image x:Name="img"
+                           HorizontalAlignment="Left"
+                           Height="73"
+                           Margin="499,300,0,0"
+                           VerticalAlignment="Top"
+                           Width="188"
+                           Source="/PiTuiLogo.png"
+                           Stretch="Fill">
+                    </Image>
+                </Grid>
+            </TabItem>
 
         </TabControl>
     </Grid>
