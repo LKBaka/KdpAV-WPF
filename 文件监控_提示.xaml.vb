@@ -1,6 +1,23 @@
-﻿Imports iNKORE.UI.WPF.Modern.Controls
+﻿Imports System.ComponentModel
+Imports iNKORE.UI.WPF.Modern.Controls
 Public Class 文件监控_提示
-    Dim FilePath
+    Implements INotifyPropertyChanged
+    Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
+
+    Public Overridable Sub OnPropertyChanged(propertyName As String)
+        RaiseEvent PropertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+    End Sub
+
+    Dim _FilePath
+    Public Property FilePath As String
+        Get
+            Return _FilePath
+        End Get
+        Set(value As String)
+            _FilePath = value
+            OnPropertyChanged("FilePath")
+        End Set
+    End Property
     Public Sub New(argFilePath As String)
         ' 此调用是设计器所必需的。
         InitializeComponent()
@@ -12,9 +29,7 @@ Public Class 文件监控_提示
 
 
     Private Sub 进程监控_提示_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-        LblFilePath.Content = "文件路径:" & FilePath
-
-        Me.Topmost = False
+        Me.Topmost = True
     End Sub
 
     Private Async Sub Button_OK_Click(sender As Object, e As RoutedEventArgs) Handles Button_OK.Click

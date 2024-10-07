@@ -30,7 +30,7 @@ Public Class 文件监控_监控
    
     ' 文件创建或修改时触发的事件处理程序
     Private Sub OnFileChanged(sender As Object, e As FileSystemEventArgs)
-        Dim s As New Scan(MainWindow.VirusFuncsData, 125)
+        Dim s As New Scan(App.VirusFuncsData, 125)
         Dim result = s.noAsync_api_PEDataScan(e.FullPath)
         Debug.Print(result & " " & e.FullPath)
         If result Then
