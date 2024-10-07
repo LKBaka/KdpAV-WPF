@@ -5,48 +5,77 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
+      xmlns:kdpav_wpf="clr-namespace:KdpAV_WPF"
+      d:DataContext="{d:DesignInstance Type=kdpav_wpf:HomePageViewModel}"
       mc:Ignorable="d"
       Title="HomePage"
       Width="699"
       Height="450"
       Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
+    <Page.Resources>
+        <kdpav_wpf:ImageConvert x:Key="ImageConvert" />
+    </Page.Resources>
     <Grid>
-        <Button x:Name="Button_OK"
-                Content="确定"
-                HorizontalAlignment="Left"
-                Margin="592,87,0,0"
-                VerticalAlignment="Top"
-                Width="75"
-                Height="32" />
         <TextBox x:Name="TextBox_Search"
                  HorizontalAlignment="Left"
                  Height="23"
                  Margin="321,87,0,0"
                  TextWrapping="Wrap"
                  VerticalAlignment="Top"
-                 Width="266" />
+                 Width="266"
+                 xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+                 Text="{Binding SearchViewModel.SearchText,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+            <b:Interaction.Triggers>
+                <b:EventTrigger EventName="TextChanged">
+                    <b:InvokeCommandAction Command="{Binding SearchViewModel.SearchFunctionAction}" />
+                </b:EventTrigger>
+            </b:Interaction.Triggers>
+        </TextBox>
         <ListBox x:Name="ListBox_Result"
                  HorizontalAlignment="Left"
-                 Height="42"
+                 Height="{Binding SearchViewModel.SearchBoxHeight}"
                  Margin="321,124,0,0"
                  VerticalAlignment="Top"
-                 Width="346"
-                 Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}" />
+                 Width="334"
+                 SelectedItem="{Binding SearchViewModel.SelectedFunction}"
+                 ItemsSource="{Binding SearchViewModel.Results,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"
+                 Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}">
+        </ListBox>
         <Label x:Name="lblTitle"
-               Content="11：03"
                HorizontalAlignment="Left"
                Margin="44,36,0,0"
                VerticalAlignment="Top"
                Height="42"
                Width="356"
-               FontSize="32" />
+               FontSize="32"
+               Content="{Binding DateViewModel.DateHourMinuteSecondContent}" />
         <Label x:Name="lblSubTitle"
-               Content="2024年9月15日"
+               Content="{Binding DateViewModel.DateYearMonthDayContent}"
                HorizontalAlignment="Left"
                Margin="44,87,0,0"
                VerticalAlignment="Top"
                Height="33"
                Width="269"
                FontSize="26" />
+        <Button Content="确定"
+                Margin="592,87,0,0"
+                VerticalAlignment="Top"
+                Height="32"
+                Width="64"
+                xmlns:b="http://schemas.microsoft.com/xaml/behaviors">
+            <b:Interaction.Triggers>
+                <b:EventTrigger EventName="Click">
+                    <b:InvokeCommandAction Command="{Binding SearchViewModel.CallFuncAction}" />
+                </b:EventTrigger>
+            </b:Interaction.Triggers>
+        </Button>
+        <!--<Image HorizontalAlignment="Left"
+               Height="90"
+               Margin="475,36,0,0"
+               VerticalAlignment="Top"
+               Width="90"
+               RenderTransformOrigin="0.54,0.508"
+               Source="{Binding ImagePath ,Converter={StaticResource ImageConvert}}"
+               Stretch="Fill" />-->
     </Grid>
 </Page>
