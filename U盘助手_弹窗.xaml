@@ -10,8 +10,8 @@
     Background="{DynamicResource {x:Static ui:ThemeKeys.AcrylicBackgroundFillColorDefaultBrushKey}}"
     Title="U盘助手" Height="130.842" Width="429.497">
     <Grid>
-        <Label x:Name="lblTitle" Content="UDisk [F:\]" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="403" FontSize="22" Margin="16,1,0,0"/>
-        <Label x:Name="lblSubTitle" Content="剩余空间:200GB" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="413" FontSize="18" Margin="16,29,-6,0"/>
+        <Label x:Name="lblTitle" Content="{Binding TitleContent}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="403" FontSize="22" Margin="16,1,0,0"/>
+        <Label x:Name="lblSubTitle" Content="{Binding SubTitleContent}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="413" FontSize="18" Margin="16,29,-6,0"/>
         <Button x:Name="OpenDisk" Content="打开" HorizontalAlignment="Left" Margin="15,55,0,0" VerticalAlignment="Top" Width="398" Click="Button_Click"/>
 
     </Grid>
