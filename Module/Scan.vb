@@ -80,61 +80,65 @@ Public Class Scan
     End Function
 
     Public Async Function api_PiTuiScan(ByVal filePath As String) As Task(Of Boolean)
-        Return Await Task.Run(Function()
-                                  Try
-                                      If whiteList.Contains(getMD5(filePath)) Then Return False
+        Return Await Task.Run(
+            Function()
+                Try
+                    If whiteList.Contains(getMD5(filePath)) Then Return False
 
-                                      'Virusmark.exe A abc123 "C:\Users\Example\Documents\file_to_scan.txt"
-                                      Dim procInfo As New ProcessStartInfo With {
+                    'Virusmark.exe A abc123 "C:\Users\Example\Documents\file_to_scan.txt"
+                    Dim procInfo As New ProcessStartInfo With {
                                           .FileName = """" & CommonVars.AppPath & "\PiTui_Core\PiTuiCloud.exe" & """",
                                           .Arguments = " " & "A " & "a323a4a2-d096-4dd5-b69d-6bc5b6b9ae64" & " " & """" & filePath & """",
                                           .CreateNoWindow = True,
                                           .RedirectStandardOutput = True,
                                           .UseShellExecute = False
                                       }
-                                      Dim proc As New Process With {
+                    Dim proc As New Process With {
                                           .StartInfo = procInfo
                                       }
-                                      proc.Start()
+                    proc.Start()
 
-                                      Using output As IO.StreamReader = proc.StandardOutput
-                                          Dim jsonText = output.ReadToEnd
-                                          Dim r As HezhongResult = JsonSerializer.Deserialize(Of HezhongResult)(jsonText)
-                                          If r.code = 200 Then
-                                              Return r.score >= 50
-                                          End If
-                                      End Using
+                    Using output As IO.StreamReader = proc.StandardOutput
+                        Dim jsonText = output.ReadToEnd
+                        Dim r As HezhongResult = JsonSerializer.Deserialize(Of HezhongResult)(jsonText)
+                        If r.code = 200 Then
+                            Return r.score >= 50
+                        End If
+                    End Using
 
-                                      proc.WaitForExit()
-                                  Catch ex As Exception
-                                      Debug.Print("PiTui " & ex.Message)
-                                  End Try
-                                  Return False
-                              End Function)
+                    proc.WaitForExit()
+                Catch ex As Exception
+                    Debug.Print("PiTui " & ex.Message)
+                End Try
+                Return False
+            End Function)
     End Function
 
     Public Async Function api_PEDataScan(filePath As String) As Task(Of Boolean)
-        Return Await Task.Run(Function()
-                                  Try
-                                      Dim pefile As New PeNet.PeFile(filePath)
-                                      Dim score = 0
-                                      If pefile.ImportedFunctions Is Nothing Then Return False
-                                      For i As Integer = 0 To pefile.ImportedFunctions.Count - 1
-                                          Try
-                                              If pefile.ImportedFunctions(i).Name Is Nothing Then Continue For
-                                              Dim funcName = pefile.ImportedFunctions(i).Name.Replace(vbCrLf, "")
+        Return Await Task.Run(
+            Function()
+                Try
+                    Dim pefile As New PeNet.PeFile(filePath)
+                    Dim score = 0
+                    Debug.Print($"{filePath} {pefile.ImportedFunctions Is Nothing}")
+                    ' If pefile.ImportedFunctions Is Nothing Then Return False
+                    For i As Integer = 0 To pefile.ImportedFunctions.Count - 1
+                        Try
+                            If pefile.ImportedFunctions(i).Name Is Nothing Then Continue For
+                            Dim funcName = pefile.ImportedFunctions(i).Name.Replace(vbCrLf, "")
 
-                                              score += If(PEImportedFuncsData.ContainsKey(funcName), PEImportedFuncsData(funcName), 0)
+                            score += If(PEImportedFuncsData.ContainsKey(funcName), PEImportedFuncsData(funcName), 0)
 
-                                          Catch ex As Exception
-                                          End Try
-                                      Next
-                                      Return score >= VirusScore
-                                  Catch ex As Exception
-                                  End Try
-                                  Return False
-                              End Function)
-
+                        Catch ex As Exception
+                            Debug.Print(ex.Message)
+                        End Try
+                    Next
+                    Return score >= VirusScore
+                Catch ex As Exception
+                    Debug.Print(ex.Message)
+                End Try
+                Return False
+            End Function)
     End Function
 
     Public Function noAsync_api_PEDataScan(filePath As String) As Boolean
@@ -143,6 +147,8 @@ Public Class Scan
             Dim score = 0
             For i As Integer = 0 To pefile.ImportedFunctions.Count - 1
                 'Try
+                Debug.Print($"{filePath} {pefile.ImportedFunctions Is Nothing}")
+
                 If pefile.ImportedFunctions(i).Name Is Nothing Then Continue For
                 Dim funcName = pefile.ImportedFunctions(i).Name.Replace(vbCrLf, "")
 
@@ -158,11 +164,5 @@ Public Class Scan
 
     End Function
 
-    Private Function hasText(Lst, Text) As Boolean
-        For Each l In Lst
-            If l = Text Then Return True
-        Next
-        Return False
-    End Function
 End Class
 
