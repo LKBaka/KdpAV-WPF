@@ -604,6 +604,75 @@ No one can stop my happiness<LineBreak />
                     </TextBlock>
                 </Grid>
             </TabItem>
+            <TabItem Header="IU Song Part 11"
+                     Name="IU_11"
+                     IsSelected="True"
+                     IsHitTestVisible="True">
+                <Grid>
+                    <TextBlock x:Name="l11"
+                               HorizontalAlignment="Left"
+                               Margin="10,2,0,0"
+                               VerticalAlignment="Top"
+                               Height="629"
+                               FontSize="9.3"
+                               Width="386">
+                        六王毕，四海一<LineBreak />
+我要提车装逼<LineBreak />
+提辆新宝马装逼<LineBreak />
+把我IU换新<LineBreak />
+我要封IU大皇帝<LineBreak />
+我还要颂歌接地气<LineBreak />
+踩死你们这群烂蛆<LineBreak />
+查杀就像是艾草<LineBreak />
+主防像是被爆草<LineBreak />
+无时无刻庆祝着我IU的富贵<LineBreak />
+宝马引擎也是无坚不摧<LineBreak />
+绿色用户见到只能乖乖下跪<LineBreak />
+骂别人被还击我装死没看到<LineBreak />
+反破解垃圾我直接被吓尿<LineBreak />
+你们都在说我写杀软圈钱<LineBreak />
+无所谓我会屏蔽所有怨言<LineBreak />
+无所谓，群聊中我会撤回发言<LineBreak />
+不这样怎么才能珍九鼎食万钱<LineBreak />
+IU is forever <LineBreak />
+whichs for best<LineBreak />
+IU is forever <LineBreak />
+Now is money stealer<LineBreak />
+IU is forever <LineBreak />
+Neverones can win the beemer<LineBreak />
+不充钱你不需要好的使用体验<LineBreak />
+VIP8会自动为我主持所有公权<LineBreak />
+管理也会耐心解答野爹证谣言<LineBreak />
+那些卡死关闭就是非法的诈骗<LineBreak />
+被颁发野爹证后少点给我犯贱<LineBreak />
+你们都在说我写杀软圈钱<LineBreak />
+无所谓我会屏蔽所有怨言<LineBreak />
+无所谓，群聊中我会撤回发言<LineBreak />
+不这样怎么才能珍九鼎食万钱<LineBreak />
+不这样怎么才能继续疯狂圈钱<LineBreak />
+oh BMW is my dream ride<LineBreak />
+welcome to my favourite sight<LineBreak />
+plz sit and listen<LineBreak />
+new support by the banner<LineBreak />
+你们都在说我写杀软圈钱<LineBreak />
+无所谓我会屏蔽所有怨言<LineBreak />
+无所谓，群聊中我会撤回发言<LineBreak />
+不这样怎么才能珍九鼎食万钱<LineBreak />
+IU is forever <LineBreak />
+whichs for best<LineBreak />
+IU is forever <LineBreak />
+Now is money stealer<LineBreak />
+IU is forever <LineBreak />
+不充钱你不需要好的使用体验<LineBreak />
+IU is forever <LineBreak />
+IU is forever <LineBreak />
+IU is forever <LineBreak />
+IU is forever <LineBreak />
+Neverones can win the beemer<LineBreak />
+                    </TextBlock>
+
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
