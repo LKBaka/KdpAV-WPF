@@ -2,7 +2,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="http://schemas.inkore.net/lib/ui/wpf/modern"
-    StartupUri="MainWindow.xaml"
+    xmlns:kdpav_wpf="clr-namespace:KdpAV_WPF"
+    StartupUri="Start.xaml"
     ShutdownMode="OnExplicitShutdown">
 
     <Application.Resources>
@@ -11,6 +12,7 @@
                 <ui:ThemeResources/> 
                 <ui:XamlControlsResources />
             </ResourceDictionary.MergedDictionaries>
+            <kdpav_wpf:BoolConverter x:Key="Bool取反" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
